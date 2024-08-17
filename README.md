@@ -8,7 +8,7 @@
 - ## Service File System
 
 
-    .
+```
     ├── cmd                                     # Root of main
     │   ├── grpc                                # ticket_service main
     ├── config                                  # Configuration parser, structure and .yaml file
@@ -48,7 +48,7 @@
     │       │       └── postgresql_test.go      # Postgresql Test file of current domain
     ├── pkg                                     # Custom packages for general common usage
     └── ...
-
+```
 - ## Tech Stack
   - ### Golang (v1.23.0)
   - ### Fiber
