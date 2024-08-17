@@ -1,0 +1,21 @@
+{
+  "General": {
+    "ERROR_DB": "We are currently unable to process your request. Please try again later",
+    "ERROR_PERMISSION" : "Permission denied",
+    "ERROR_CREATE_DIRECTORY" : "An error occurred while directory has been creating",
+    "ERROR_VERIFICATION_CODE" : "Your verification code is not valid",
+    "ERROR_SESSION" : "Your session is invalid",
+    "ERROR_VALIDATION" : "This data is not valid",
+    "ERROR_NO_ROW":"There is no resulting data",
+    "ERROR_FAILED":"Process failed",
+    "ERROR_CONFLICT": "This data is already used",
+    "ERROR_PARSER": "The request body can not be successfully parsed",
+    "ERROR_LIMIT": "You have exceeded your package limit",
+    "ERROR_HEADER": "There are missing headers",
+    "HEALTH_OK": "Status OK !",
+    "OK": "The operation successfully finished"
+  },
+  "Purchase": {
+    "ERROR_INVALID_AMOUNT": "The amount of tickets that you entered is not processable."
+  }
+}

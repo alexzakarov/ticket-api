@@ -1,0 +1,42 @@
+version: '3.8'
+
+volumes:
+  db:
+    name: db
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - 8080:8080
+    links:
+      - postgres
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - app_net
+  postgres:
+    image: postgres:14-alpine
+    hostname: db
+    ports:
+      - 5432:5432
+    volumes:
+      - ~/apps/postgres:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=123456
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=dev
+    networks:
+      - app_net
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U postgres -d dev" ]
+      interval: 3s
+      retries: 5
+      start_period: 30s
+      timeout: 10s
+networks:
+  app_net:
+    driver: bridge

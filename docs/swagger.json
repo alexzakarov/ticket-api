@@ -1,0 +1,217 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "Ticket service broker with REST endpoints",
+        "title": "Ticket API",
+        "contact": {
+            "email": "semerci394@gmail.com"
+        },
+        "version": "1.0"
+    },
+    "basePath": "/org/v1",
+    "paths": {
+        "/tickets": {
+            "post": {
+                "description": "\"CreateTicket Function\". Creates an allocation of tickets available to purchase.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Tickets"
+                ],
+                "summary": "CreateTicket Function Creates a ticket",
+                "parameters": [
+                    {
+                        "description": "CreateTicket",
+                        "name": "CreateTicket",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/entities.CreateTicketReqDto"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/entities.HandlerResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/entities.HandlerResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/tickets/{id}": {
+            "post": {
+                "description": "\"GetTicket Function\". Gets an allocation of tickets available to purchase.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Tickets"
+                ],
+                "summary": "GetTicket Function Gets a ticket",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "GetTicket",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/entities.HandlerResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/entities.HandlerResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/tickets/{id}/purchases": {
+            "get": {
+                "description": "\"GetPurchaseLogs Function\". Gets all proceeded purchases of a ticket",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Purchases"
+                ],
+                "summary": "GetPurchaseLogs Function Gets all purchases",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "GetPurchaseLogs",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/entities.HandlerResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/entities.HandlerResponse"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "description": "\"CreateTicket Function\". Creates a purchase call to reduce allocation from ticket and create its log",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Purchases"
+                ],
+                "summary": "MakePurchase Function Creates a purchase call",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "MakePurchase",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "MakePurchase",
+                        "name": "MakePurchase",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/entities.MakePurchaseReqDto"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/entities.HandlerResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/entities.HandlerResponse"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "entities.CreateTicketReqDto": {
+            "type": "object",
+            "required": [
+                "allocation"
+            ],
+            "properties": {
+                "allocation": {
+                    "type": "integer"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                }
+            }
+        },
+        "entities.HandlerResponse": {
+            "type": "object",
+            "properties": {
+                "data": {},
+                "error": {
+                    "type": "boolean"
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+        },
+        "entities.MakePurchaseReqDto": {
+            "type": "object",
+            "properties": {
+                "quantity": {
+                    "type": "integer"
+                },
+                "user_id": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}

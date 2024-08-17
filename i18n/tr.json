@@ -1,0 +1,21 @@
+{
+  "General": {
+    "ERROR_DB": "Şu anda işleminizi gerçekleştiremiyoruz, lütfen daha sonra tekrar deneyin",
+    "ERROR_PERMISSION" : "Yetki geçersiz",
+    "ERROR_CREATE_DIRECTORY" : "Klasör oluşturma sırasında hata gerçekleşti",
+    "ERROR_VERIFICATION_CODE" : "Doğrulama kodunuz geçersiz",
+    "ERROR_SESSION" : "Bu session geçersiz",
+    "ERROR_VALIDATION" : "İletilen veri geçersiz",
+    "ERROR_NO_ROW":"Kayıt bulunamadı",
+    "ERROR_FAILED":"İşlem Başarısız",
+    "ERROR_CONFLICT": "Bu veri zaten kayıtlı",
+    "ERROR_PARSER": "İstek içeriği uygun değil",
+    "ERROR_LIMIT": "Paket limitine ulaşıldı",
+    "ERROR_HEADER": "Gerekli header bilgileri bulunamadı",
+    "HEALTH_OK": "Hazır Durumda !",
+    "OK": "İşlem başarılı sonuçlandı"
+  },
+  "Purchase": {
+    "ERROR_INVALID_AMOUNT": "Girilen bilet miktarı geçersiz."
+  }
+}

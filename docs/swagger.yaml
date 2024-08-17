@@ -1,0 +1,146 @@
+basePath: /org/v1
+definitions:
+  entities.CreateTicketReqDto:
+    properties:
+      allocation:
+        type: integer
+      description:
+        type: string
+      name:
+        type: string
+    required:
+    - allocation
+    type: object
+  entities.HandlerResponse:
+    properties:
+      data: {}
+      error:
+        type: boolean
+      message:
+        type: string
+    type: object
+  entities.MakePurchaseReqDto:
+    properties:
+      quantity:
+        type: integer
+      user_id:
+        type: string
+    type: object
+info:
+  contact:
+    email: semerci394@gmail.com
+  description: Ticket service broker with REST endpoints
+  title: Ticket API
+  version: "1.0"
+paths:
+  /tickets:
+    post:
+      consumes:
+      - application/json
+      description: '"CreateTicket Function". Creates an allocation of tickets available
+        to purchase.'
+      parameters:
+      - description: CreateTicket
+        in: body
+        name: CreateTicket
+        required: true
+        schema:
+          $ref: '#/definitions/entities.CreateTicketReqDto'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+      summary: CreateTicket Function Creates a ticket
+      tags:
+      - Tickets
+  /tickets/{id}:
+    post:
+      consumes:
+      - application/json
+      description: '"GetTicket Function". Gets an allocation of tickets available
+        to purchase.'
+      parameters:
+      - description: GetTicket
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+      summary: GetTicket Function Gets a ticket
+      tags:
+      - Tickets
+  /tickets/{id}/purchases:
+    get:
+      consumes:
+      - application/json
+      description: '"GetPurchaseLogs Function". Gets all proceeded purchases of a
+        ticket'
+      parameters:
+      - description: GetPurchaseLogs
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+      summary: GetPurchaseLogs Function Gets all purchases
+      tags:
+      - Purchases
+    post:
+      consumes:
+      - application/json
+      description: '"CreateTicket Function". Creates a purchase call to reduce allocation
+        from ticket and create its log'
+      parameters:
+      - description: MakePurchase
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: MakePurchase
+        in: body
+        name: MakePurchase
+        required: true
+        schema:
+          $ref: '#/definitions/entities.MakePurchaseReqDto'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+      summary: MakePurchase Function Creates a purchase call
+      tags:
+      - Purchases
+swagger: "2.0"
