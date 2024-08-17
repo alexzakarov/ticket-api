@@ -1,9 +1,10 @@
 # Ticket-App
 
 - ## General Information
-
-### <i>The application is written on hexagonal architecture and Fiber is used for http server. Embedded-postgres in-memory db library is used to handle db queries for test cases. </i>
-### I18n implementation is working with "x-lang-code" header. 
+  - ### The application is written on hexagonal architecture
+  - ### Fiber is used for http server. 
+  - ### Embedded-postgres in-memory db library is used to handle db queries for test cases.
+  - ### I18n implementation is working with "x-lang-code" header. 
 
 - ## Service File System
 
